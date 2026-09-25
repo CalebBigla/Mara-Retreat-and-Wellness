@@ -2,24 +2,24 @@ export const siteContent = {
   hero: {
     eyebrow: "Retreat & Wellness · Lagos",
     title: "Reconnect with<br/><em className=\"font-normal\">your inner peace.</em>",
-    copy: "Premium wellness, therapeutic massages and advanced aesthetics tailored to your body—at our serene Lagos sanctuary or in the comfort of your home.",
-    buttonText1: "Book your session",
+    copy: "Premium massage and wellness experiences tailored to help you slow down, settle in and restore at our serene Lagos retreat or in the comfort of your home.",
+    buttonText1: "Book a Session",
     buttonText2: "Explore services",
-    buttonLink1: "https://wa.me/2349073385380",
-    buttonLink2: "#services"
+    buttonLink1: "/book",
+    buttonLink2: "/services"
   },
   about: {
     eyebrow: "Welcome to Mara",
     title: "A sanctuary for <em className=\"font-normal\">lasting renewal.</em>",
-    copy: "Mara Retreat &amp; Wellness is a highly rated sanctuary in Lekki/Ajah, Lagos. We pair deep-tissue relaxation, advanced skincare and modern aesthetic treatments with thoughtful, professional care.\n\nOur philosophy is simple: wellness is not a luxury, but a vital pillar of health. Every treatment is designed to bring physical relief and mental clarity.",
+    copy: "Mara Retreat &amp; Wellness is a sanctuary in Lekki/Ajah, Lagos. We create unhurried massage and wellness experiences with thoughtful care in a setting designed for comfort.\n\nOur philosophy is simple: make space for restoration, calm and self-care.",
     buttonText: "Why choose Mara",
     buttonLink: "#experience",
-    image: "/assets/spa-treatment.jpg" // we'll use the treatment image as placeholder
+    image: "/assets/massage-therapy.jpg"
   },
   services: {
     eyebrow: "Therapeutic massage solutions",
     title: "Massage Menu",
-    copy: "Melt away tension, improve circulation and re-energize your muscles with signature therapies delivered by experienced professionals."
+    copy: "Explore Mara's massage experiences, each designed with comfort, relaxation and restoration in mind."
   },
   featured: {
     eyebrow: "Mobile spa · Home service",
@@ -27,7 +27,7 @@ export const siteContent = {
     copy: "Our fully equipped mobile wellness team brings the complete Mara experience to your home, office or hotel.",
     buttonText: "Request home service",
     buttonLink: "https://wa.me/2349073385380",
-    image: "/assets/spa-details.jpg"
+    image: "/assets/wellness-gift.jpg"
   },
   experience: {
     eyebrow: "Why choose us",
@@ -35,7 +35,7 @@ export const siteContent = {
     points: [
       { number: "01", title: "5-Star Experience", description: "Professional wellness therapies and attentive customer care." },
       { number: "02", title: "Tranquil Sanctuary", description: "A peaceful, secure setting created for complete mental and physical detachment." },
-      { number: "03", title: "Expert Therapists", description: "Skilled professionals using therapeutic techniques and modern aesthetic care." },
+      { number: "03", title: "Thoughtful Care", description: "Massage experiences delivered with comfort and attention to detail." },
       { number: "04", title: "Flexible Care", description: "Visit our Ajah retreat or let our mobile spa come to you." }
     ]
   },
@@ -49,8 +49,8 @@ export const siteContent = {
     eyebrow: "Relax · Rejuvenate · Restore",
     title: "Make space for <em className=\"font-normal\">yourself.</em>",
     copy: "Choose your treatment and let our concierge arrange every detail.",
-    buttonText: "Book an appointment",
-    buttonLink: "https://wa.me/2349073385380"
+    buttonText: "Book a Session",
+    buttonLink: "/book"
   },
   contact: {
     eyebrow: "Get in touch",
@@ -63,7 +63,7 @@ export const siteContent = {
     whatsapp: "+234 907 338 5380"
   },
   footer: {
-    description: "A holistic escape for expertly delivered body therapies, pristine aesthetic care and deeply restorative wellness.",
+    description: "A holistic escape for massage, quiet comfort and deeply restorative wellness.",
     socialLinks: [
       { name: "Instagram", url: "#" }
     ]

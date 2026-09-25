@@ -1,10 +1,5 @@
+import { Link } from "react-router-dom";
+import { MapPin, Phone, MessageCircle } from "lucide-react";
 import { PublicLayout } from "@/components/layout/PublicLayout";
-import { Contact } from "@/components/public/Contact";
-
-export function ContactPage() {
-  return (
-    <PublicLayout>
-      <Contact />
-    </PublicLayout>
-  );
-}
+import { siteContent } from "@/data/siteContent";
+export function ContactPage() { const { address, phone, whatsapp } = siteContent.contact; return <PublicLayout><section className="bg-primary px-5 pb-20 pt-40 text-primary-foreground md:px-10"><div className="mx-auto max-w-5xl"><p className="text-xs font-semibold uppercase tracking-[.22em] text-primary-foreground/65">Contact Mara</p><h1 className="mt-5 font-display text-6xl leading-[.9] md:text-8xl">Your renewal begins here.</h1><p className="mt-7 max-w-xl leading-7 text-primary-foreground/75">Questions, details or a tailored request? Reach out to Mara's concierge team.</p></div></section><section className="px-5 py-20 md:px-10"><div className="mx-auto grid max-w-[1160px] gap-px bg-border md:grid-cols-3"><div className="bg-background p-8"><Phone className="size-5 text-accent" /><p className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Phone</p><a href={`tel:${phone.replace(/\s/g,"")}`} className="mt-3 block font-display text-3xl hover:text-accent">{phone}</a></div><div className="bg-background p-8"><MessageCircle className="size-5 text-accent" /><p className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">WhatsApp</p><a href={`https://wa.me/${whatsapp.replace(/\D/g,"")}`} className="mt-3 block font-display text-3xl hover:text-accent">Chat with Mara</a></div><div className="bg-background p-8"><MapPin className="size-5 text-accent" /><p className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Visit</p><p className="mt-3 font-display text-2xl leading-tight">{address}</p></div></div><div className="mx-auto mt-16 max-w-3xl bg-surface p-8 text-center md:p-12"><p className="text-xs font-semibold uppercase tracking-[.22em] text-accent">Ready to unwind?</p><h2 className="mt-4 font-display text-5xl">Request your session.</h2><Link to="/book" className="mt-8 inline-flex min-h-12 items-center justify-center bg-primary px-7 text-xs font-semibold uppercase tracking-[.16em] text-primary-foreground">Book a Session</Link></div></section></PublicLayout>; }

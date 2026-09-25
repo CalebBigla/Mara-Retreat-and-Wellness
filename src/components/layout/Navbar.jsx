@@ -1,77 +1,14 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowDown, ArrowRight, Check, Clock3, CreditCard, Home, Instagram, MapPin, Menu, Phone, Sparkles, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { massages } from "@/data/massages";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
-const whatsappUrl = "https://wa.me/2349073385380";
-
-const navItems = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Massages", to: "/massages" },
-  { label: "Gallery", to: "/gallery" },
-  { label: "Contact", to: "/contact" },
-  { label: "Book", to: "/book" }
-];
-
-function Wordmark({ light = false }) {
-  return <a href="/" className={cn("inline-flex flex-col", light ? "text-primary-foreground" : "text-foreground")} aria-label="Mara Retreat and Wellness home">
-    <span className="font-display text-[2rem] leading-none">Mara</span>
-    <span className="mt-1 text-[0.52rem] uppercase tracking-[0.3em] opacity-75">Retreat &amp; Wellness</span>
-  </a>;
-}
+const links = [{ label: "Home", to: "/" }, { label: "Gallery", to: "/gallery" }, { label: "About", to: "/about" }, { label: "Contact", to: "/contact" }];
+function Wordmark() { return <Link to="/" className="inline-flex flex-col text-primary-foreground" aria-label="Mara Retreat and Wellness home"><span className="font-display text-[2rem] leading-none">Mara</span><span className="mt-1 text-[0.52rem] uppercase tracking-[0.3em] opacity-75">Retreat &amp; Wellness</span></Link>; }
+const navClass = ({ isActive }) => `text-[0.68rem] uppercase tracking-[0.12em] transition-opacity hover:opacity-60 ${isActive ? "opacity-60" : ""}`;
 
 export function Navbar() {
-  const [open, setOpen] = useState(false);
-  // Note: We are not managing body overflow here for simplicity, but we can add it if needed.
-  // useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [open]);
-
-  return (
-    <header className="absolute inset-x-0 top-0 z-40 border-b border-primary-foreground/20 text-primary-foreground">
-      <div className="mx-auto grid h-24 max-w-[1480px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:px-10 lg:grid-cols-[1fr_auto_1fr]">
-        <Wordmark light />
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
-          {navItems.map(({ label, to }) => (
-            <Link key={to} to={to} className="text-[0.68rem] uppercase tracking-[0.12em] transition-opacity hover:opacity-60">
-              {label}
-            </Link>
-          ))}
-        </nav>
-        <div className="hidden justify-end lg:flex">
-          <a href={whatsappUrl} target="_blank" rel="noreferrer" className={cn(
-            "inline-flex min-h-12 items-center justify-center gap-2 border border-primary-foreground/50 bg-transparent text-primary-foreground hover:border-primary-foreground hover:bg-primary-foreground hover:text-primary px-6 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-          )}>
-            Book an appointment
-          </a>
-        </div>
-        <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10 lg:hidden" onClick={() => setOpen(true)} aria-label="Open menu">
-          <Menu className="size-6" />
-        </Button>
-      </div>
-      <div className={cn("fixed inset-0 z-50 bg-primary px-6 py-6 transition-transform duration-500 lg:hidden", open ? "translate-x-0" : "translate-x-full")} aria-hidden={!open}>
-        <div className="flex items-center justify-between">
-          <Wordmark light />
-          <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10" onClick={() => setOpen(false)} aria-label="Close menu">
-            <X className="size-6" />
-          </Button>
-        </div>
-        <nav className="mt-14 flex flex-col border-t border-primary-foreground/20">
-          {navItems.map(({ label, to }, i) => (
-            <Link key={to} to={to} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} className="flex items-center justify-between border-b border-primary-foreground/20 py-4 font-display text-3xl">
-              {label}
-              <span className="font-sans text-xs opacity-50">0{i + 1}</span>
-            </Link>
-          ))}
-        </nav>
-        <a href={whatsappUrl} target="_blank" rel="noreferrer" className={cn(
-          "inline-flex min-h-12 items-center justify-center gap-2 border border-primary bg-primary text-primary-foreground hover:border-accent hover:bg-accent hover:text-accent-foreground px-6 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-          "mt-8 w-full"
-        )}>
-          Book an appointment
-        </a>
-      </div>
-    </header>
-  );
+  const [mobileOpen, setMobileOpen] = useState(false); const [servicesOpen, setServicesOpen] = useState(false);
+  useEffect(() => { document.body.style.overflow = mobileOpen ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [mobileOpen]);
+  return <header className="absolute inset-x-0 top-0 z-40 border-b border-primary-foreground/20 text-primary-foreground"><div className="mx-auto grid h-24 max-w-[1480px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:px-10 lg:grid-cols-[1fr_auto_1fr]"><Wordmark /><nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation"><NavLink to="/" end className={navClass}>Home</NavLink><div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}><Link to="/services" className="flex items-center gap-1 text-[0.68rem] uppercase tracking-[0.12em] transition-opacity hover:opacity-60" aria-expanded={servicesOpen}>Services <ChevronDown className="size-3" /></Link><div className={`absolute left-1/2 top-full mt-4 w-64 -translate-x-1/2 border border-primary-foreground/15 bg-primary p-2 shadow-2xl transition-all ${servicesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"}`}><Link to="/services" className="block border-b border-primary-foreground/15 px-4 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-primary-foreground/10">All Services</Link><div className="max-h-72 overflow-y-auto py-1">{massages.map(service => <Link key={service.slug} to={`/services/${service.slug}`} className="block px-4 py-2.5 text-sm text-primary-foreground/80 hover:bg-primary-foreground/10 hover:text-primary-foreground">{service.name}</Link>)}</div></div></div>{links.slice(1).map(link => <NavLink key={link.to} to={link.to} className={navClass}>{link.label}</NavLink>)}</nav><div className="hidden justify-end lg:flex"><Link to="/book" className="inline-flex min-h-12 items-center justify-center border border-primary-foreground bg-primary-foreground px-6 text-xs font-semibold uppercase tracking-[0.16em] text-primary transition-all duration-500 hover:bg-transparent hover:text-primary-foreground">Book a Session</Link></div><button className="text-primary-foreground lg:hidden" onClick={() => setMobileOpen(true)} aria-label="Open navigation"><Menu className="size-6" /></button></div><div className={`fixed inset-0 z-50 overflow-y-auto bg-primary px-6 py-6 transition-transform duration-500 lg:hidden ${mobileOpen ? "translate-x-0" : "translate-x-full"}`} aria-hidden={!mobileOpen}><div className="flex items-center justify-between"><Wordmark /><button onClick={() => setMobileOpen(false)} aria-label="Close navigation"><X className="size-6" /></button></div><nav className="mt-14 flex flex-col border-t border-primary-foreground/20"><NavLink to="/" end onClick={() => setMobileOpen(false)} className="border-b border-primary-foreground/20 py-4 font-display text-3xl">Home</NavLink><Link to="/services" onClick={() => setMobileOpen(false)} className="border-b border-primary-foreground/20 py-4 font-display text-3xl">Services</Link><div className="border-b border-primary-foreground/20 py-3 pl-4">{massages.map(service => <Link key={service.slug} to={`/services/${service.slug}`} onClick={() => setMobileOpen(false)} className="block py-2 text-sm text-primary-foreground/70">{service.name}</Link>)}</div>{links.slice(1).map(link => <NavLink key={link.to} to={link.to} onClick={() => setMobileOpen(false)} className="border-b border-primary-foreground/20 py-4 font-display text-3xl">{link.label}</NavLink>)}</nav><Link to="/book" onClick={() => setMobileOpen(false)} className="mt-8 flex min-h-12 items-center justify-center border border-primary-foreground bg-primary-foreground px-6 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Book a Session</Link></div></header>;
 }

@@ -1,6 +1,7 @@
 import { siteContent } from "@/data/siteContent";
 import { galleryImages } from "@/data/gallery";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 export function Gallery() {
   const { eyebrow, title, buttonText, buttonLink } = siteContent.gallery;
@@ -18,11 +19,7 @@ export function Gallery() {
           ))}
         </div>
         <div className="mt-6 text-center">
-          <a href={buttonLink}>
-            <button className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent">
-              {buttonText}
-            </button>
-          </a>
+          <Link to="/gallery" className="inline-flex items-center justify-center border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent">{buttonText}</Link>
         </div>
       </div>
     </section>

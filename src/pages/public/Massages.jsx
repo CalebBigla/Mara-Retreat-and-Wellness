@@ -1,31 +1,4 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { massages } from "@/data/massages";
-import { MassageCard } from "@/components/public/MassageCard";
-import { Button } from "@/components/ui/button";
-import { siteContent } from "@/data/siteContent";
-import { cn } from "@/lib/utils";
-
-export function Massages() {
-  const { eyebrow, title } = siteContent.services; // Reuse the services section title and eyebrow
-
-  return (
-    <PublicLayout>
-      <section className="mb-12">
-        <h2 className={cn("mb-5 text-[0.67rem] font-semibold uppercase tracking-[0.24em]", "text-primary-foreground/70")}>{eyebrow}</h2>
-        <h1 className="font-display text-5xl leading-[1.02] text-balance md:text-7xl">{title}</h1>
-      </section>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 px-6">
-        {massages.map((massage) => (
-          <MassageCard key={massage.id} massage={massage} />
-        ))}
-      </div>
-      <div className="mt-12 flex justify-center">
-        <a href="https://wa.me/2349073385380" target="_blank" rel="noreferrer" className={cn(
-          "inline-flex min-h-12 items-center justify-center gap-2 border border-primary bg-primary text-primary-foreground hover:border-accent hover:bg-accent hover:text-accent-foreground px-6 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-        )}>
-          Book an appointment
-        </a>
-      </div>
-    </PublicLayout>
-  );
-}
+import { ServiceCard } from "@/components/public/ServiceCard";
+export function Massages() { return <PublicLayout><section className="bg-primary px-5 pb-20 pt-40 text-primary-foreground md:px-10"><div className="mx-auto max-w-[1360px]"><p className="text-xs font-semibold uppercase tracking-[.24em] text-primary-foreground/65">Mara massage menu</p><h1 className="mt-5 max-w-3xl font-display text-6xl leading-[.9] md:text-8xl">Choose your moment of restoration.</h1><p className="mt-7 max-w-xl leading-7 text-primary-foreground/75">Explore Mara's massage experiences, each designed with comfort, relaxation and restoration in mind.</p></div></section><section className="bg-background px-5 py-16 md:px-10 md:py-24"><div className="mx-auto grid max-w-[1360px] gap-6 md:grid-cols-2 xl:grid-cols-3">{massages.filter(s => s.status === "published").map(service => <ServiceCard key={service.slug} service={service} />)}</div></section></PublicLayout>; }

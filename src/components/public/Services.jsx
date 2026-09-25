@@ -30,7 +30,7 @@ export function Services() {
           {massages.map((massage, i) => (
             <article key={massage.id} className="grid gap-4 border-b border-border px-1 py-7 last:border-0 lg:grid-cols-[42px_1.25fr_1.45fr_100px_110px_75px] lg:items-center lg:gap-5 lg:px-5">
               <span className={cn("text-xs text-muted-foreground")}>{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="font-display text-2xl leading-tight">{massage.name}</h3>
+              <Link to={`/services/${massage.slug}`} className="font-display text-2xl leading-tight hover:text-accent">{massage.name}</Link>
               <p className="text-sm leading-6 text-muted-foreground">{massage.description}</p>
               <div>
                 <span className={cn("text-[0.6rem] uppercase text-muted-foreground lg:hidden")}>Spa price · </span>
@@ -51,11 +51,11 @@ export function Services() {
           <p className="max-w-2xl text-sm leading-6">
             <strong>Please note:</strong> A deposit is required before a therapist leaves for your home-service location.
           </p>
-          <a href="https://wa.me/2349073385380" target="_blank" rel="noreferrer" className={cn(
+          <Link to="/services" className={cn(
             "inline-flex min-h-12 items-center justify-center gap-2 border border-primary bg-primary text-primary-foreground hover:border-accent hover:bg-accent hover:text-accent-foreground px-6 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
           )}>
-            Reserve a treatment
-          </a>
+            Explore all services
+          </Link>
         </div>
       </div>
     </section>

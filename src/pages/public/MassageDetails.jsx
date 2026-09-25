@@ -1,58 +1,6 @@
+import { Link, useParams } from "react-router-dom";
+import { Clock3, ArrowRight } from "lucide-react";
 import { PublicLayout } from "@/components/layout/PublicLayout";
-import { useParams } from "react-router-dom";
 import { massages } from "@/data/massages";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
-export function MassageDetails() {
-  const { slug } = useParams();
-  const massage = massages.find((m) => m.slug === slug);
-
-  if (!massage) {
-    return (
-      <PublicLayout>
-        <p>Massage not found</p>
-      </PublicLayout>
-    );
-  }
-
-  return (
-    <PublicLayout>
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-6">
-          <h1 className="font-display text-4xl">{massage.name}</h1>
-          <p className="text-lg">{massage.description}</p>
-        </div>
-        <div className="grid gap-4 mb-6">
-          <div>
-            <span className="font-semibold">Duration:</span>
-            <span>{massage.duration}</span>
-          </div>
-          <div>
-            <span className="font-semibold">Spa Price:</span>
-            <span>{massage.spaPrice}</span>
-          </div>
-          <div>
-            <span className="font-semibold">Home Price:</span>
-            <span>{massage.homePrice}</span>
-          </div>
-          <div>
-            <span className="font-semibold">Status:</span>
-            <span className={cn("font-medium", massage.status === "published" && "text-green-500")}>
-              {massage.status}
-            </span>
-          </div>
-        </div>
-        {/* We can add an image here if we have one for the massage */}
-        {/* <img src={massage.image} alt={massage.name} className="rounded-lg mb-6" /> */}
-        <div className="mt-8">
-          <a href="https://wa.me/2349073385380" target="_blank" rel="noreferrer" className={cn(
-            "inline-flex min-h-12 items-center justify-center gap-2 border border-primary bg-primary text-primary-foreground hover:border-accent hover:bg-accent hover:text-accent-foreground px-6 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-          )}>
-            Book this massage
-          </a>
-        </div>
-      </div>
-    </PublicLayout>
-  );
-}
+import { ServiceCard } from "@/components/public/ServiceCard";
+export function MassageDetails() { const { slug } = useParams(); const service = massages.find(item => item.slug === slug); if (!service) return <PublicLayout><section className="px-5 pb-24 pt-40 text-center"><h1 className="font-display text-5xl">Service not found</h1><Link to="/services" className="mt-6 inline-block underline">Explore services</Link></section></PublicLayout>; const related = massages.filter(item => item.slug !== service.slug).slice(0, 3); return <PublicLayout><section className="bg-primary pt-24 text-primary-foreground"><div className="grid min-h-[640px] lg:grid-cols-2"><div className="flex flex-col justify-center px-5 py-16 md:px-10 lg:pl-[max(2.5rem,calc((100vw-1360px)/2))]"><Link to="/services" className="mb-10 text-xs uppercase tracking-[.18em] text-primary-foreground/65 hover:text-primary-foreground">← All services</Link><p className="text-xs font-semibold uppercase tracking-[.22em] text-primary-foreground/65">Mara treatment</p><h1 className="mt-5 font-display text-6xl leading-[.9] md:text-8xl">{service.name}</h1><p className="mt-7 max-w-xl text-lg leading-8 text-primary-foreground/80">{service.description}</p><div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm"><span>{service.spaPrice} at Mara</span>{service.homePrice && <span>{service.homePrice} home service</span>}<span className="inline-flex items-center gap-2"><Clock3 className="size-4" />{service.duration}</span></div><Link to={`/book?service=${service.slug}`} className="mt-10 inline-flex w-fit min-h-12 items-center justify-center bg-primary-foreground px-6 text-xs font-semibold uppercase tracking-[.16em] text-primary transition hover:bg-secondary">Book This Session</Link></div><img src={service.image} alt={service.name} className="h-full min-h-[420px] w-full object-cover" /></div></section><section className="mx-auto grid max-w-[1160px] gap-12 px-5 py-20 md:grid-cols-2 md:px-10 md:py-28"><div><p className="text-xs font-semibold uppercase tracking-[.22em] text-accent">Treatment overview</p><h2 className="mt-4 font-display text-5xl">A moment designed around you.</h2><p className="mt-6 leading-8 text-muted-foreground">{service.description} Your session is an opportunity to pause from the pace of the everyday and settle into a more comfortable rhythm.</p></div><div className="border-l border-border pl-0 md:pl-10"><p className="text-xs font-semibold uppercase tracking-[.22em] text-accent">What to expect</p><p className="mt-6 leading-8 text-muted-foreground">A calm, considered experience focused on relaxation, comfort and wellbeing. Share your preferences with Mara when you make your session request so the experience can be tailored with care.</p><dl className="mt-8 space-y-3 border-t border-border pt-6 text-sm"><div className="flex justify-between"><dt>Duration</dt><dd>{service.duration}</dd></div><div className="flex justify-between"><dt>At Mara</dt><dd>{service.spaPrice}</dd></div>{service.homePrice && <div className="flex justify-between"><dt>Home service</dt><dd>{service.homePrice}</dd></div>}</dl></div></section><section className="bg-surface px-5 py-20 md:px-10"><div className="mx-auto max-w-[1360px]"><div className="mb-10 flex items-end justify-between"><div><p className="text-xs font-semibold uppercase tracking-[.22em] text-accent">Continue exploring</p><h2 className="mt-3 font-display text-5xl">Related services</h2></div><Link to="/services" className="hidden items-center gap-2 text-xs font-semibold uppercase tracking-widest md:flex">All services <ArrowRight className="size-4" /></Link></div><div className="grid gap-6 md:grid-cols-3">{related.map(item => <ServiceCard key={item.slug} service={item} />)}</div></div></section><section className="bg-primary px-5 py-20 text-center text-primary-foreground"><h2 className="font-display text-5xl">Ready when you are.</h2><Link to={`/book?service=${service.slug}`} className="mt-8 inline-flex min-h-12 items-center justify-center border border-primary-foreground px-6 text-xs font-semibold uppercase tracking-[.16em] hover:bg-primary-foreground hover:text-primary">Book This Session</Link></section></PublicLayout>; }

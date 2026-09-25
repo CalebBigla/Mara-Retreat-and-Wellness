@@ -1,10 +1,6 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { PublicLayout } from "@/components/layout/PublicLayout";
-import { Gallery } from "@/components/public/Gallery";
-
-export function GalleryPage() {
-  return (
-    <PublicLayout>
-      <Gallery />
-    </PublicLayout>
-  );
-}
+import { galleryImages } from "@/data/gallery";
+export function GalleryPage() { const [active, setActive] = useState(null); const close=()=>setActive(null); const next=()=>setActive(i => (i+1)%galleryImages.length); const prev=()=>setActive(i => (i-1+galleryImages.length)%galleryImages.length); useEffect(()=>{ const key=e=>{if(active===null)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")next();if(e.key==="ArrowLeft")prev();}; window.addEventListener("keydown",key);return()=>window.removeEventListener("keydown",key);},[active]); return <PublicLayout><section className="bg-primary px-5 pb-16 pt-40 text-primary-foreground md:px-10"><div className="mx-auto max-w-[1360px]"><p className="text-xs font-semibold uppercase tracking-[.22em] text-primary-foreground/65">Mara gallery</p><h1 className="mt-5 font-display text-6xl leading-[.9] md:text-8xl">A space to breathe.</h1></div></section><section className="px-5 py-16 md:px-10 md:py-24"><div className="mx-auto columns-1 gap-5 md:columns-2 lg:columns-3">{galleryImages.map((image,index)=><button key={image.id} onClick={()=>setActive(index)} className="group relative mb-5 block w-full overflow-hidden text-left"><img src={image.src} alt={image.alt} className="w-full object-cover transition duration-700 group-hover:scale-105" /><span className="absolute inset-x-0 bottom-0 bg-primary/70 p-4 text-sm text-primary-foreground opacity-0 transition group-hover:opacity-100">{image.title}</span></button>)}</div><div className="mt-14 text-center"><Link to="/book" className="inline-flex min-h-12 items-center justify-center bg-primary px-7 text-xs font-semibold uppercase tracking-[.16em] text-primary-foreground">Book a Session</Link></div></section>{active !== null && <div className="fixed inset-0 z-[60] flex items-center justify-center bg-primary/95 p-4" role="dialog" aria-modal="true" aria-label="Gallery image viewer"><button onClick={close} className="absolute right-5 top-5 text-primary-foreground" aria-label="Close gallery"><X className="size-7" /></button><button onClick={prev} className="absolute left-3 p-3 text-primary-foreground md:left-8" aria-label="Previous image"><ChevronLeft className="size-8" /></button><img src={galleryImages[active].src} alt={galleryImages[active].alt} className="max-h-[82vh] max-w-[80vw] object-contain" /><button onClick={next} className="absolute right-3 p-3 text-primary-foreground md:right-8" aria-label="Next image"><ChevronRight className="size-8" /></button><p className="absolute bottom-6 text-sm text-primary-foreground/80">{galleryImages[active].title} · {active+1} / {galleryImages.length}</p></div>}</PublicLayout>; }

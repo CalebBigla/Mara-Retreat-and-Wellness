@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Source assets (images are in public/assets)
+src/assets
+src-backup

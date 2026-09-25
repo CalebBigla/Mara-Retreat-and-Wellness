@@ -17,7 +17,7 @@ export const galleryImages = [
   },
   {
     id: "3",
-    src: "/assets/spa-treatment.jpg",
+    src: "/assets/massage-session.jpg",
     alt: "Professional massage treatment",
     title: "Massage Treatment",
     category: "treatment",
@@ -25,18 +25,50 @@ export const galleryImages = [
   },
   {
     id: "4",
-    src: "/assets/spa-hero.jpg",
-    alt: "Private treatment room",
-    title: "Treatment Room",
+    src: "/assets/luxury-spa.jpg",
+    alt: "Luxury private spa treatment room",
+    title: "Luxury Treatment Room",
     category: "room",
     featured: false
   },
   {
     id: "5",
-    src: "/assets/spa-details.jpg",
-    alt: "Natural treatment details",
-    title: "Natural Treatment Details",
+    src: "/assets/wellness-space.jpg",
+    alt: "Tranquil wellness and self-care space",
+    title: "Wellness & Self Care Space",
+    category: "interior",
+    featured: true
+  },
+  {
+    id: "6",
+    src: "/assets/massage-therapy.jpg",
+    alt: "Therapeutic massage session",
+    title: "Therapeutic Massage",
+    category: "treatment",
+    featured: false
+  },
+  {
+    id: "7",
+    src: "/assets/spa-resort.jpg",
+    alt: "Spa resort ambiance",
+    title: "Spa Resort Experience",
+    category: "interior",
+    featured: true
+  },
+  {
+    id: "8",
+    src: "/assets/wellness-gift.jpg",
+    alt: "Wellness gift packages",
+    title: "The Gift of Wellness",
     category: "details",
+    featured: false
+  },
+  {
+    id: "9",
+    src: "/assets/spa-room.jpg",
+    alt: "Private spa room",
+    title: "Private Spa Room",
+    category: "room",
     featured: true
   }
 ];
