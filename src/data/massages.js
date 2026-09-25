@@ -1,0 +1,158 @@
+export const massages = [
+  {
+    id: "1",
+    name: "Full Body Swedish",
+    slug: "full-body-swedish",
+    description: "Gentle, soothing strokes improve circulation, reduce stress and promote relaxation.",
+    duration: "1 hr",
+    spaPrice: "₦30,000",
+    homePrice: "₦55,000",
+    image: "/assets/spa-treatment.jpg", // using treatment image as placeholder
+    featured: true,
+    status: "published"
+  },
+  {
+    id: "2",
+    name: "Full Body Deep Tissue",
+    slug: "full-body-deep-tissue",
+    description: "Targets deeper muscle layers to relieve chronic tension, reduce muscle pain and improve mobility.",
+    duration: "1 hr",
+    spaPrice: "₦35,000",
+    homePrice: "₦60,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: true,
+    status: "published"
+  },
+  {
+    id: "3",
+    name: "Thai Massage",
+    slug: "thai-massage",
+    description: "Acupressure, stretching and assisted yoga postures improve flexibility and energy flow.",
+    duration: "45 min",
+    spaPrice: "₦30,000",
+    homePrice: "₦55,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "4",
+    name: "Swedish Nuru",
+    slug: "swedish-nuru",
+    description: "A blend of Swedish massage and Nuru gel for deep relaxation and nourished skin.",
+    duration: "1 hr",
+    spaPrice: "₦40,000",
+    homePrice: "₦65,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "5",
+    name: "Deep Tissue Nuru",
+    slug: "deep-tissue-nuru",
+    description: "Deep tissue pressure and Nuru gel release intense tension and restore muscle function.",
+    duration: "1 hr",
+    spaPrice: "₦45,000",
+    homePrice: "₦70,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "6",
+    name: "Erotic / Deep Tissue / Swedish",
+    slug: "erotic-deep-tissue-swedish",
+    description: "A customized experience blending relaxation and arousal while easing muscle tension.",
+    duration: "1 hr",
+    spaPrice: "₦45,000",
+    homePrice: "₦70,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "7",
+    name: "Tantric / Deep Tissue / Swedish",
+    slug: "tantric-deep-tissue-swedish",
+    description: "A mindful, body-connecting massage designed to awaken sensual energy and promote deep relaxation.",
+    duration: "1 hr",
+    spaPrice: "₦40,000",
+    homePrice: "₦65,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "8",
+    name: "4 Hands Swedish / Deep Tissue Nuru",
+    slug: "4-hands-swedish-deep-tissue-nuru",
+    description: "Two therapists work in harmony to deliver ultimate relaxation and release.",
+    duration: "1 hr",
+    spaPrice: "₦70,000",
+    homePrice: "₦95,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "9",
+    name: "Couples Nuru Massage",
+    slug: "couples-nuru-massage",
+    description: "A side-by-side Nuru massage for couples to relax, connect and enjoy together.",
+    duration: "1 hr",
+    spaPrice: "₦70,000",
+    homePrice: "₦95,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "10",
+    name: "Yoni Massage",
+    slug: "yoni-massage",
+    description: "A women’s wellness massage supporting reproductive health, hormonal balance and deep relaxation.",
+    duration: "1 hr",
+    spaPrice: "₦40,000",
+    homePrice: "₦65,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "11",
+    name: "Lingam",
+    slug: "lingam",
+    description: "A tailored men’s massage that promotes relaxation, improves circulation and relieves tension.",
+    duration: "1 hr",
+    spaPrice: "₦40,000",
+    homePrice: "₦65,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "12",
+    name: "Reflexology",
+    slug: "reflexology",
+    description: "Pressure applied to reflex points on the feet supports healing, balance and whole-body relaxation.",
+    duration: "35 min",
+    spaPrice: "₦30,000",
+    homePrice: "₦55,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  },
+  {
+    id: "13",
+    name: "Back Massage",
+    slug: "back-massage",
+    description: "Focused care for the back, shoulders and neck to ease stress, tightness and improve posture.",
+    duration: "35 min",
+    spaPrice: "₦30,000",
+    homePrice: "₦55,000",
+    image: "/assets/spa-treatment.jpg",
+    featured: false,
+    status: "published"
+  }
+];
